@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="google_client_id" translatable="false" formatted="false">887517843051-in6qaouitu4urea0iucd8vvd3rg9gqui.apps.googleusercontent.com</string>
+    <string name="google_maps_key" formatted="false" translatable="false">AIzaSyB1l4m16DqPoNFU_mYLqKlRWvs3zbWnVgk</string>
+    <string name="imagen_api" formatted="false" translatable="false">46827094-ec72b075b0dfdc7e3a06687d4</string>
+</resources>
