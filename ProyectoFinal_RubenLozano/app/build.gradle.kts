@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -33,23 +34,25 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    viewBinding{
+        enable=true
+    }
 }
 
 dependencies {
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.picasso)
-    //fragments
-    implementation(libs.androidx.fragment.ktx)
-    //mapas
-    implementation(libs.play.services.maps)
-    //google
-    implementation(libs.play.services.auth)
+    implementation ("com.squareup.picasso:picasso:2.8")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    implementation(libs.firebase.auth)
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    implementation(libs.play.services.maps)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

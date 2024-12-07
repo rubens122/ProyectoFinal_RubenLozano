@@ -5,69 +5,76 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="12dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SPOTIFY"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/lastfm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email..."
-        android:inputType="textEmailAddress"
+        android:layout_marginTop="32dp"
+        android:hint="@string/email"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
         app:layout_constraintVertical_bias="0.5" />
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Contraseña..."
+        android:layout_marginTop="24dp"
+        android:hint="@string/contraseña"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegistro"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmail"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/btnRegistro"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnLogin"
+        android:text="Logearse"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Registrarse"
-        app:layout_constraintEnd_toStartOf="@+id/btnLogin"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnRegister"
+        android:text="Registrarse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_google"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logearse"
-        app:layout_constraintBottom_toBottomOf="@+id/btnRegistro"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnRegistro"
-        app:layout_constraintTop_toTopOf="@+id/btnRegistro" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRegister" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

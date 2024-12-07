@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ProyectoFinal_RubenLozano</string>
+    <string name="email">Email...</string>
+    <string name="contraseña">Contraseña...</string>
+    <string name="last_fm_api_key">cd1ba300cd0cbfcab886ae3bd5a5c53c</string>
 </resources>
