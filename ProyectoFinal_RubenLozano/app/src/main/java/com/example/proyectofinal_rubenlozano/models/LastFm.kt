@@ -5,16 +5,24 @@ import java.io.Serializable
 
 data class LastFm(
     @SerializedName("name") val nombre: String,
-    @SerializedName("playcount") val reproducciones: Int,
-    @SerializedName("listeners") val oyentes: Int,
     @SerializedName("url") val url: String,
-    @SerializedName("imagen") val imagenes: List<Image>
-) : Serializable
+    @SerializedName("image") val imagenes: List<Image>
+) : Serializable {
+    fun getImageUrl(size: String = "medium"): String? {
+        return imagenes.find { it.size == size }?.url
+    }
+}
 
 data class Image(
     @SerializedName("#text") val url: String,
     val size: String
-)
+) : Serializable
+
 data class ListaMusica(
-    @SerializedName("results") val listaMusica: MutableList<LastFm>)
+    @SerializedName("artists") val artists: Artists
+)
+
+data class Artists(
+    @SerializedName("artist") val listaMusica: MutableList<LastFm>
+)
 

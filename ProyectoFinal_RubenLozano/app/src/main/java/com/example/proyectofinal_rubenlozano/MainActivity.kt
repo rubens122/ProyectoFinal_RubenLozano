@@ -3,9 +3,14 @@ package com.example.proyectofinal_rubenlozano
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.proyectofinal_rubenlozano.databinding.ActivityMainBinding
 import com.example.proyectofinal_rubenlozano.models.UsuarioModel
 import com.google.firebase.auth.FirebaseAuth
@@ -18,7 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 
 class MainActivity : AppCompatActivity() {
-    private  val responseLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+    private val responseLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == RESULT_OK) {
             val datos = GoogleSignIn.getSignedInAccountFromIntent(it.data)
             try {
@@ -36,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                         }
                 }
             } catch (e: ApiException) {
-                Log.d("ERROR de API:>>>>", e.message.toString())
+                Log.d("ERROR de API", e.message.toString())
             }
         }
         if (it.resultCode == RESULT_CANCELED) {
@@ -48,16 +53,43 @@ class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var email = ""
     private var pass = ""
+    private var generoMusical = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         auth = Firebase.auth
+        configurarSpinner()
         setListeners()
     }
 
+    private fun configurarSpinner() {
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.generos_musicales,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spGenero.adapter = adapter
+    }
+
     private fun setListeners() {
+        binding.spGenero.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                generoMusical = parent?.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                generoMusical = ""
+            }
+        }
+
         binding.btnLogin.setOnClickListener {
             login()
         }
@@ -75,26 +107,21 @@ class MainActivity : AppCompatActivity() {
             .requestEmail()
             .build()
         val googleClient = GoogleSignIn.getClient(this, googleConf)
-
-        googleClient.signOut() //Fundamental para que no haga login automático si he cerrado sesión
-
+        googleClient.signOut()
         responseLauncher.launch(googleClient.signInIntent)
     }
 
     private fun registrar() {
         if (!datosCorrectos()) return
-        // Validamos si el correo ya está registrado en la base de datos local
         val crudUsuarios = CrudUsuarios()
         if (crudUsuarios.verificarUsuarioExistente(email)) {
             binding.etEmail.error = "Este correo ya está registrado."
             return
         }
-        // Si no existe, procedemos a registrar al usuario en Firebase
         auth.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    // Guardamos al usuario en la base de datos local después de registrar con Firebase
-                    val usuario = UsuarioModel(0, email, pass) // 0 para ID autoincremental
+                    val usuario = UsuarioModel(0, email, pass)
                     if (crudUsuarios.create(usuario) != -1L) {
                         Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
                         irActivityApp()
@@ -130,6 +157,10 @@ class MainActivity : AppCompatActivity() {
         pass = binding.etPassword.text.toString().trim()
         if (pass.length < 6) {
             binding.etPassword.error = "La contraseña debe tener al menos 6 caracteres"
+            return false
+        }
+        if (binding.spGenero.selectedItemPosition == 0) {
+            Toast.makeText(this, "Seleccione un género musical", Toast.LENGTH_SHORT).show()
             return false
         }
         return true

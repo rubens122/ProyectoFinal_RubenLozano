@@ -8,7 +8,7 @@ class Aplicacion : Application() {
     companion object {
         const val VERSION = 2
         const val DB = "Base_1"
-        const val TABLA_USUARIOS = "usuarios" // Nueva tabla
+        const val TABLA_USUARIOS = "usuarios"
         lateinit var appContext: Context
         lateinit var llave: MyDatabase
     }

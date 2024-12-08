@@ -14,7 +14,7 @@ import com.example.proyectofinal_rubenlozano.adapters.UsuarioAdapter
 import com.example.proyectofinal_rubenlozano.models.UsuarioModel
 import com.example.proyectofinal_rubenlozano.providers.db.CrudUsuarios
 
-class SearchFragment : Fragment() {
+class UsuariosFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: UsuarioAdapter
@@ -24,50 +24,42 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflar el diseño para este fragmento
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
+        val view = inflater.inflate(R.layout.fragment_usuarios, container, false)
 
-        // Configurar RecyclerView
-        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView = view.findViewById(R.id.rvUsuarios)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Configurar el adaptador y asignarlo al RecyclerView
         adapter = UsuarioAdapter(
             listaUsuarios,
-            ::borrarUsuario, // Pasar el método como referencia
-            ::actualizarUsuario // Pasar el método como referencia
+            ::borrarUsuario,
+            ::actualizarUsuario
         )
         recyclerView.adapter = adapter
-
-        // Traer los usuarios al inicializar el adaptador
         traerUsuarios()
 
         return view
     }
 
     private fun traerUsuarios() {
-        // Obtener lista de usuarios desde la base de datos
         listaUsuarios.clear()
         listaUsuarios.addAll(CrudUsuarios().read())
-
-        // Notificar al adaptador de los cambios en los datos
         adapter.notifyDataSetChanged()
     }
 
     private fun borrarUsuario(position: Int) {
         val usuarioAEliminar = listaUsuarios[position]
-        CrudUsuarios().delete(usuarioAEliminar.id) // Eliminar de la base de datos
-        traerUsuarios() // Refrescar lista
+        CrudUsuarios().delete(usuarioAEliminar.id)
+        traerUsuarios()
     }
 
     private fun actualizarUsuario(usuario: UsuarioModel) {
         val intent = Intent(requireContext(), ActualizarUsuario::class.java).apply {
-            putExtra("USUARIO", usuario) // Asegúrate de que UsuarioModel implemente Parcelable o Serializable
+            putExtra("USUARIO", usuario)
         }
         startActivity(intent)
     }
     override fun onResume() {
         super.onResume()
-        traerUsuarios() // Refrescar lista al volver al fragmento
+        traerUsuarios()
     }
 }

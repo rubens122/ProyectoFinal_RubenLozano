@@ -40,6 +40,12 @@ android {
 }
 
 dependencies {
+    //fragments
+    implementation("androidx.fragment:fragment-ktx:1.8.5")
+    //mapas
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
+    //google
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation ("com.squareup.picasso:picasso:2.8")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")

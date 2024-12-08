@@ -3,4 +3,13 @@
     <string name="email">Email...</string>
     <string name="contraseña">Contraseña...</string>
     <string name="last_fm_api_key">cd1ba300cd0cbfcab886ae3bd5a5c53c</string>
+    <string-array name="generos_musicales">
+        <item>Selecciona un género</item>
+        <item>Pop</item>
+        <item>Rock</item>
+        <item>Jazz</item>
+        <item>Clásica</item>
+        <item>Reggaetón</item>
+        <item>Hip-Hop</item>
+    </string-array>
 </resources>

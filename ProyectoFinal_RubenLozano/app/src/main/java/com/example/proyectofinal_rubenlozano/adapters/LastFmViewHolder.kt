@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 class LastFmViewHolder(v: View): RecyclerView.ViewHolder(v) {
     val binding = LastfmLayoutBinding.bind(v)
     fun render(musica: LastFm, onDetalleClick: (LastFm) -> Unit) {
-        val imagenMediana = musica.imagenes.find { it.size == "medium" }?.url
+        val imagenMediana = musica.getImageUrl("medium")
         binding.tvNombre.text = musica.nombre
         Picasso.get().load(imagenMediana).into(binding.ivImagen)
         itemView.setOnClickListener {

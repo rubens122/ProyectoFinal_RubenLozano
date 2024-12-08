@@ -2,5 +2,4 @@
 <resources>
     <string name="google_client_id" translatable="false" formatted="false">"886626879077-0els7789iacc7dppmpft990qd1mqall5.apps.googleusercontent.com"</string>
     <string name="google_maps_key" formatted="false" translatable="false">AIzaSyB1l4m16DqPoNFU_mYLqKlRWvs3zbWnVgk</string>
-    <string name="imagen_api" formatted="false" translatable="false">46827094-ec72b075b0dfdc7e3a06687d4</string>
 </resources>

@@ -8,8 +8,8 @@ import com.example.proyectofinal_rubenlozano.models.UsuarioModel
 
 class UsuarioAdapter(
     var listaUsuarios: MutableList<UsuarioModel>,
-    private val borrarUsuario: (Int) -> Unit,  // Para borrar un usuario
-    private val updateUsuario: (UsuarioModel) -> Unit  // Para actualizar un usuario
+    private val borrarUsuario: (Int) -> Unit,
+    private val updateUsuario: (UsuarioModel) -> Unit
 ) : RecyclerView.Adapter<UsuarioViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioViewHolder {

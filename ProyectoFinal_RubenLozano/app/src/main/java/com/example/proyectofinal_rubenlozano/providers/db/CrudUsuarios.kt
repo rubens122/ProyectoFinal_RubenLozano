@@ -29,7 +29,7 @@ class CrudUsuarios {
             "SELECT * FROM usuarios WHERE email = ?",
             arrayOf(email)
         )
-        val existe = cursor.moveToFirst() // Si se encuentra algún registro, devolverá true
+        val existe = cursor.moveToFirst()
         cursor.close()
         con.close()
         return existe

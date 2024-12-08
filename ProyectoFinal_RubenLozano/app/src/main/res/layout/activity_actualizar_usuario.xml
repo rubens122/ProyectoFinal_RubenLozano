@@ -9,7 +9,7 @@
     tools:context=".AddActivity">
 
     <TextView
-        android:id="@+id/et_title2"
+        android:id="@+id/etTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -23,31 +23,31 @@
 
 
     <Button
-        android:id="@+id/btn_guardar"
+        android:id="@+id/btnGuardar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="103dp"
         android:backgroundTint="#D8BFD8"
         android:text="Guardar"
-        app:layout_constraintEnd_toStartOf="@+id/btn_reset"
+        app:layout_constraintEnd_toStartOf="@+id/btnLimpiar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_AcPassword" />
+        app:layout_constraintTop_toBottomOf="@id/etPassword2" />
 
     <Button
-        android:id="@+id/btn_reset"
+        android:id="@+id/btnLimpiar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#D8BFD8"
         android:text="Limpiar"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_guardar"
+        app:layout_constraintBottom_toBottomOf="@+id/btnGuardar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_guardar"
-        app:layout_constraintTop_toTopOf="@+id/btn_guardar" />
+        app:layout_constraintStart_toEndOf="@+id/btnGuardar2"
+        app:layout_constraintTop_toTopOf="@+id/btnGuardar2" />
 
     <Button
-        android:id="@+id/btn_cancelar"
+        android:id="@+id/btnCancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="43dp"
@@ -56,31 +56,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_guardar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnGuardar2" />
 
     <EditText
-        android:id="@+id/et_AcPassword"
+        android:id="@+id/etPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="58dp"
         android:ems="10"
+        android:hint="@string/contraseña"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_AcEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmail2" />
 
     <EditText
-        android:id="@+id/et_AcEmail"
+        android:id="@+id/etEmail2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:ems="10"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_title2"
+        app:layout_constraintTop_toBottomOf="@+id/etTitulo"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

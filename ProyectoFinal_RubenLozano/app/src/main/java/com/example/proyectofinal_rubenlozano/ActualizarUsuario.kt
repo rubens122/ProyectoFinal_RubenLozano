@@ -25,64 +25,48 @@ class ActualizarUsuario : AppCompatActivity() {
         }
         usuario = intent.getSerializableExtra("USUARIO") as UsuarioModel
 
-        // Cargar datos iniciales del usuario
         cargarDatosUsuario()
-
-        // Configurar los listeners de los botones
         setListeners()
     }
 
-    // Método para cargar los datos del usuario en los campos
     private fun cargarDatosUsuario() {
-        binding.etAcEmail.setText(usuario.email)
-        binding.etAcPassword.setText(usuario.password)
+        binding.etEmail2.setText(usuario.email)
+        binding.etPassword2.setText(usuario.password)
     }
 
-    // Método que configura los listeners de los botones
     private fun setListeners() {
-        // Configurar listener para el botón de guardar
-        binding.btnGuardar.setOnClickListener { guardarCambios() }
-
-        // Configurar listener para el botón de limpiar
-        binding.btnReset.setOnClickListener { limpiarCampos() }
-
-        // Configurar listener para el botón de cancelar
+        binding.btnGuardar2.setOnClickListener { guardarCambios() }
+        binding.btnLimpiar.setOnClickListener { limpiarCampos() }
         binding.btnCancelar.setOnClickListener { cancelarEdicion() }
     }
 
-    // Método para guardar los cambios en el usuario
     private fun guardarCambios() {
-        // Validar campos
-        val nuevoEmail = binding.etAcEmail.text.toString().trim()
-        val nuevaPassword = binding.etAcPassword.text.toString().trim()
+        val nuevoEmail = binding.etEmail2.text.toString().trim()
+        val nuevaPassword = binding.etPassword2.text.toString().trim()
 
         if (nuevoEmail.isEmpty() || nuevaPassword.isEmpty()) {
             Toast.makeText(this, "Por favor, llena todos los campos.", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Actualizar objeto usuario
         usuario.email = nuevoEmail
         usuario.password = nuevaPassword
 
-        // Guardar cambios en la base de datos
         val resultado = CrudUsuarios().update(usuario)
 
         if (resultado) {
             Toast.makeText(this, "Usuario actualizado correctamente.", Toast.LENGTH_SHORT).show()
-            finish() // Finalizar actividad
+            finish()
         } else {
             Toast.makeText(this, "Error al actualizar el usuario.", Toast.LENGTH_SHORT).show()
         }
     }
 
-    // Método para limpiar los campos de texto
     private fun limpiarCampos() {
-        binding.etAcEmail.text.clear()
-        binding.etAcPassword.text.clear()
+        binding.etEmail2.text.clear()
+        binding.etPassword2.text.clear()
     }
 
-    // Método para cancelar la edición y cerrar la actividad
     private fun cancelarEdicion() {
         Toast.makeText(this, "Edición cancelada.", Toast.LENGTH_SHORT).show()
         finish()

@@ -3,59 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#E1BEE7">
 
-    <!-- Toolbar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Botón Buscar -->
     <Button
-        android:id="@+id/btn_search"
+        android:id="@+id/btnUsuarios"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Buscar"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:text="Usuarios"
+        app:layout_constraintEnd_toStartOf="@id/btnArtistas"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_favorites"
-        app:layout_constraintHorizontal_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Botón Favoritos -->
     <Button
-        android:id="@+id/btn_favorites"
+        android:id="@+id/btnArtistas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Favoritos"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toEndOf="@id/btn_search"
-        app:layout_constraintEnd_toStartOf="@id/btn_events"
-        app:layout_constraintHorizontal_chainStyle="packed" />
+        android:text="Artistas"
+        app:layout_constraintEnd_toStartOf="@id/btnEventos"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/btnUsuarios"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Botón Eventos -->
     <Button
-        android:id="@+id/btn_events"
+        android:id="@+id/btnEventos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Eventos"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toEndOf="@id/btn_favorites"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_chainStyle="packed" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/btnArtistas"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- FrameLayout para los Fragments -->
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:id="@+id/fgPrincipal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_search"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnUsuarios" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
